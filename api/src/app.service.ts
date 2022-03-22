@@ -1,7 +1,7 @@
-import {Injectable} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
-import {join} from 'path';
-import {FocusTypes} from './types/musicTypes';
+import { join } from 'path';
+import { FocusTypes } from './types/musicTypes';
 
 @Injectable()
 export class AppService {
