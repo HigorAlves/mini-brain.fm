@@ -1,8 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
+import * as fs from 'fs';
+import {join} from 'path';
+import {FocusTypes} from './types/musicTypes';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getMusicNames(type: FocusTypes): Array<string> {
+    const folderPath = join(process.cwd(), `src/assets/musics/${type}`);
+    return fs.readdirSync(folderPath);
   }
 }
