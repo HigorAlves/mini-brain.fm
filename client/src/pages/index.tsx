@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default function Home() {
-	;<h1>hellow</h1>
+	return <h1>hellow</h1>
 }
