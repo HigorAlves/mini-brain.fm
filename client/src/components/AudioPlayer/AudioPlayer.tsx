@@ -10,6 +10,7 @@ import useStyles from './styles.audioPlayer'
 export function AudioPlayer() {
 	const { state, setState } = useMusic()
 	const { classes } = useStyles({ showPlayer: state.show })
+	// @ts-ignore
 	const { data: music } = useGetTracksNames(state.music?.state)
 	const [soundUrl, setSoundUrl] = useState<string>()
 	const audioPlayer = useRef<HTMLAudioElement>(null)
@@ -38,7 +39,7 @@ export function AudioPlayer() {
 				isPlaying: true,
 				show: true,
 				music: {
-					state: state.music?.state,
+					state: state.music?.state as any,
 					name: randomMusic
 				}
 			})
