@@ -28,10 +28,26 @@
 
 ### Requirements
 
-- Track urls must not be hardcoded in the front end. a server must be created to tell the front end what mp3s are eligible to be played for a given mental state.
+- Track urls must not be hardcoded in the front end. a server must be created to tell the front end what mp3s are
+  eligible to be played for a given mental state.
   - example server: `get /tracks/focus`, `get /tracks/relax`, ...etc.
 - you must use git to commit your work. use the same messaging, and commit sizes you would use for work.
 - make sure to include a readme with directions on how to get your project up and running.
 
 ### Assets
+
 - three mp3s have been provided for each mental state. you can use those as the audio files in this project.
+
+# How to run
+
+## Client
+
+You need to go inside the folder named client and run `yarn run build` then `yarn start`
+
+> You need to install all dependencies first
+
+## Api
+
+You need to go inside the folder named client and run `yarn run build` then `yarn start`
+
+> You need to install all dependencies first
