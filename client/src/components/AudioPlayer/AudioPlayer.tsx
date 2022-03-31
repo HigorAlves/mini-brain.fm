@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Badge, Button, Group, Paper } from '@mantine/core'
+import { useMutation } from 'react-query'
 
 import { useMusic } from '~/hooks/useMusic'
-import { useGetTracksNames } from '~/services/tracksQueries'
+import {
+	postFavoriteTrack,
+	useFavoriteTracks,
+	useGetTracksNames
+} from '~/services/tracksQueries'
 
 import useStyles from './styles.audioPlayer'
 
@@ -14,6 +19,9 @@ export function AudioPlayer() {
 	const { data: music } = useGetTracksNames(state.music?.state)
 	const [soundUrl, setSoundUrl] = useState<string>()
 	const audioPlayer = useRef<HTMLAudioElement>(null)
+	const mutation = useMutation((musicName: string) =>
+		postFavoriteTrack(musicName)
+	)
 
 	function playOrPausePlayer() {
 		if (audioPlayer.current && setState) {
@@ -46,6 +54,10 @@ export function AudioPlayer() {
 		}
 	}
 
+	function setAsFavorite() {
+		mutation.mutate(state.music?.name as string)
+	}
+
 	useEffect(() => {
 		if (state.isPlaying && audioPlayer.current) {
 			audioPlayer.current.play()
@@ -63,6 +75,9 @@ export function AudioPlayer() {
 				</Button>
 				<Button color={'indigo'} variant='light' onClick={skipMusic}>
 					Skip song
+				</Button>
+				<Button color={'cyan'} variant='light' onClick={setAsFavorite}>
+					Favorite
 				</Button>
 			</Group>
 
